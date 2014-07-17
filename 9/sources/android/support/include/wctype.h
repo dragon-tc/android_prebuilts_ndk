@@ -73,8 +73,6 @@ wint_t towctrans_l(wint_t, wctrans_t, locale_t);
 wctrans_t wctrans_l(const char *, locale_t);
 wctype_t  wctype_l(const char *, locale_t);
 
-#endif // !__LP64__
-
 int iswalpha_l(wint_t, locale_t);
 int iswblank_l(wint_t, locale_t);
 int iswcntrl_l(wint_t, locale_t);
@@ -88,6 +86,8 @@ int iswxdigit_l(wint_t, locale_t);
 
 wint_t towlower_l(wint_t, locale_t);
 wint_t towupper_l(wint_t, locale_t);
+
+#endif // !__LP64__
 
 #ifdef __cplusplus
 }  // extern "C"
