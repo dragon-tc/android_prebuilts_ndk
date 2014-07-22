@@ -24,12 +24,16 @@
 #define HAVE_ARCH_SIGINFO_T
 #define HAVE_ARCH_COPY_SIGINFO
 struct siginfo;
-#define __ARCH_SI_PREAMBLE_SIZE (3 * sizeof(int))
+#if _MIPS_SZLONG == 32
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#ifdef __LP64__
-#undef __ARCH_SI_PREAMBLE_SIZE
+#define __ARCH_SI_PREAMBLE_SIZE (3 * sizeof(int))
+#elif _MIPS_SZLONG == 64
 #define __ARCH_SI_PREAMBLE_SIZE (4 * sizeof(int))
+#else
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#error _MIPS_SZLONG neither 32 nor 64
 #endif
+#define __ARCH_SIGSYS
 #include <asm-generic/siginfo.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 typedef struct siginfo {
@@ -90,15 +94,21 @@ typedef struct siginfo {
  __ARCH_SI_BAND_T _band;
  int _fd;
  } _sigpoll;
- } _sifields;
+ struct {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ void __user *_call_addr;
+ int _syscall;
+ unsigned int _arch;
+ } _sigsys;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ } _sifields;
 } siginfo_t;
 #undef SI_ASYNCIO
 #undef SI_TIMER
-#undef SI_MESGQ
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#undef SI_MESGQ
 #define SI_ASYNCIO -2
 #define SI_TIMER __SI_CODE(__SI_TIMER, -3)
 #define SI_MESGQ __SI_CODE(__SI_MESGQ, -4)
-#endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#endif
