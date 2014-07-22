@@ -35,6 +35,28 @@ typedef sl_int64_t             SLAint64;          /* 64 bit signed integer   */
 typedef sl_uint64_t            SLAuint64;         /* 64 bit unsigned integer */
 
 /*---------------------------------------------------------------------------*/
+/* Android PCM Data Format                                                   */
+/*---------------------------------------------------------------------------*/
+
+/* The following pcm representations and data formats map to those in OpenSLES 1.1 */
+#define SL_ANDROID_PCM_REPRESENTATION_SIGNED_INT       ((SLuint32) 0x00000001)
+#define SL_ANDROID_PCM_REPRESENTATION_UNSIGNED_INT     ((SLuint32) 0x00000002)
+#define SL_ANDROID_PCM_REPRESENTATION_FLOAT            ((SLuint32) 0x00000003)
+
+#define SL_ANDROID_DATAFORMAT_PCM_EX    ((SLuint32) 0x00000004)
+
+typedef struct SLAndroidDataFormat_PCM_EX_ {
+    SLuint32         formatType;
+    SLuint32         numChannels;
+    SLuint32         sampleRate;
+    SLuint32         bitsPerSample;
+    SLuint32         containerSize;
+    SLuint32         channelMask;
+    SLuint32         endianness;
+    SLuint32         representation;
+} SLAndroidDataFormat_PCM_EX;
+
+/*---------------------------------------------------------------------------*/
 /* Android Effect interface                                                  */
 /*---------------------------------------------------------------------------*/
 

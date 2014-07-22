@@ -44,11 +44,10 @@ void _Exit(int);
 int                  mbtowc(wchar_t *pwc, const char *pmb, size_t max);
 long                 strtol_l(const char *nptr, char **endptr, int base, locale_t loc);
 unsigned long        strtoul_l(const char *nptr, char **endptr, int base, locale_t loc);
-#endif // !__LP64__
-
-long long            strtoll_l(const char *nptr, char **endptr, int base, locale_t loc);
-unsigned long long   strtoull_l(const char *nptr, char **endptr, int base, locale_t loc);
+long long            strtoll_l(const char *nptr, char **endptr, size_t base, locale_t loc);
+unsigned long long   strtoull_l(const char *nptr, char **endptr, size_t base, locale_t loc);
 long double          strtold_l(const char *nptr, char **endptr, locale_t loc);
+#endif // !__LP64__
 
 #ifdef __cplusplus
 }  // extern "C"
