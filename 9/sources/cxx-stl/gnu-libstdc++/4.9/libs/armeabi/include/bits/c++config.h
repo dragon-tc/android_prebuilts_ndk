@@ -31,7 +31,7 @@
 #define _GLIBCXX_CXX_CONFIG_H 1
 
 // The current version of the C++ library in compressed ISO date format.
-#define __GLIBCXX__ 20140422
+#define __GLIBCXX__ 20140827
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1293,8 +1293,11 @@ namespace std
    this host. */
 /* #undef _GLIBCXX_USE_DECIMAL_FLOAT */
 
-/* Define if __float128 is supported on this host. */
+/* Define if __float128 is supported on this host.
+   Hide all uses of __float128 from Clang.  Google ref b/6422845  */
+#ifndef __clang__
 /* #undef _GLIBCXX_USE_FLOAT128 */
+#endif
 
 /* Defined if gettimeofday is available. */
 #define _GLIBCXX_USE_GETTIMEOFDAY 1
@@ -1345,8 +1348,11 @@ namespace std
 /* Define to 1 if a verbose library is built, or 0 otherwise. */
 #define _GLIBCXX_VERBOSE 1
 
-/* Defined if as can handle rdrand. */
+/* Defined if as can handle rdrand.
+   Disable when building with Clang.  Google ref b/8680429 */
+#ifndef __clang__
 /* #undef _GLIBCXX_X86_RDRAND */
+#endif
 
 /* Define to 1 if mutex_timedlock is available. */
 #define _GTHREAD_USE_MUTEX_TIMEDLOCK 0
