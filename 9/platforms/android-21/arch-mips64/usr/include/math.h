@@ -517,7 +517,7 @@ int	__builtin_ilogb(double) __NDK_FPABI_MATH__ __pure2;
 int	__builtin_isinf(double) __NDK_FPABI_MATH__ __pure2;
 int	__builtin_isnan(double) __NDK_FPABI_MATH__ __pure2;
 #else
-/* clang < 3.5 has faulty prototype for __builtin_isnan */
+/* clang < 3.7 has faulty prototype for __builtin_isnan */
 #endif
 double	__builtin_lgamma(double) __NDK_FPABI_MATH__;
 long long __builtin_llrint(double) __NDK_FPABI_MATH__;
