@@ -31,13 +31,15 @@
 // __LP64__
 
 #include_next <stdlib.h>
+
+#if !defined(__LP64__)
+
 #include <xlocale.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#if !defined(__LP64__)
 long long   strtoll(const char*, char**, int);
 long double strtold(const char*, char**);
 void _Exit(int);
@@ -47,10 +49,11 @@ unsigned long        strtoul_l(const char *nptr, char **endptr, int base, locale
 long long            strtoll_l(const char *nptr, char **endptr, int base, locale_t loc);
 unsigned long long   strtoull_l(const char *nptr, char **endptr, int base, locale_t loc);
 long double          strtold_l(const char *nptr, char **endptr, locale_t loc);
-#endif // !__LP64__
 
 #ifdef __cplusplus
 }  // extern "C"
 #endif
+
+#endif // !__LP64__
 
 #endif  // NDK_ANDROID_SUPPORT_STDLIB_H
